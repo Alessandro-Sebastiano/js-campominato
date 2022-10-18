@@ -1,0 +1,73 @@
+:root {
+    /* font-style */
+    --big-font: 700;
+    --med-font: 600;
+    --sml-font: 400;
+
+    /* colors */
+    --main-back: #6495ED;
+    --border-cells: #40E0D0;
+    --cell-pass: #9FE2BF;
+}
+
+body {
+    font-family: 'Noto Sans', sans-serif;
+    font-family: 'PT Sans', sans-serif;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: var(--med-font);
+}
+
+
+h1,
+h4,
+h2 {
+    font-weight: var(--big-font);
+}
+
+
+
+.header,
+.footer {
+    height: 80px;
+}
+
+#select {
+    border: 0px;
+    outline: none;
+}
+
+#select,
+#select option {
+    font-weight: var(--med-font);
+}
+
+
+.main-content {
+    height: calc(100vh - 160px);
+    background-color: var(--main-back);
+    overflow: auto;
+}
+
+
+.grid {
+    width: 500px;
+    height: 500px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: flex-start;
+}
+
+.cell {
+    border: 1px solid var(--border-cells);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+
+.cell-pass {
+    background-color: var(--cell-pass);
+}
