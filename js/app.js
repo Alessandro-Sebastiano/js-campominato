@@ -6,7 +6,12 @@ function startPlay() {
 
     const gridBox = document.getElementById('grid-box');
     const grid = document.createElement('div');
+
+
     const BOMB_NUMBER = 16;
+    const locationsAssigned = [];
+
+
     let numOfCell;
     const select = document.getElementById('select');
     const difficulty = select.value;
@@ -30,26 +35,50 @@ function startPlay() {
             break;
     }
 
+
+    function mkBomb() {
+
+        while (locationsAssigned.length < BOMB_NUMBER) {
+            const bombPosition = Math.floor(Math.random() * (numOfCell - 1) + 1);
+            if (!locationsAssigned.includes(bombPosition)) {
+                locationsAssigned.push(bombPosition);
+            }
+        }
+
+        console.log(locationsAssigned);
+    }
+
+    mkBomb();
+
+
     function mkCell(cellNumber) {
 
         const cell = document.createElement('div');
         cell.innerHTML = `<span>${cellNumber}</span>`
         cell.className = 'cell';
         const cellForLine = Math.sqrt(numOfCell);
+
         //console.log(cellForLine);
+
         cell.style.width = `calc(100% / ${cellForLine})`;
         cell.style.height = `calc(100% / ${cellForLine})`;
         grid.appendChild(cell);
         cell.addEventListener('click', () => {
-            if (!cell.classList.contains('cell-pass')) {
+            if (!locationsAssigned.includes(cellNumber) && !cell.classList.contains('cell-pass')) {
                 cell.classList.add('cell-pass');
-                console.log('Cella numero: ' + cellNumber);
+                if (!cell.classList.contains('cell-pass')) {
+                    console.log('cella numero: ' + cellNumber);
+                }
+            } else if (locationsAssigned.includes(cellNumber)) {
+                cell.classList.add('cell-bomb');
             }
+
 
             resetBtn.addEventListener('click', () => {
                 cell.classList.remove('cell-pass');
             })
         })
+
 
     }
 

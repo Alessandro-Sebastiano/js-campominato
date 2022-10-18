@@ -8,6 +8,7 @@
     --main-back: #6495ED;
     --border-cells: #40E0D0;
     --cell-pass: #9FE2BF;
+    --cell-bomb: #DE3163;
 }
 
 body {
@@ -70,4 +71,8 @@ h2 {
 
 .cell-pass {
     background-color: var(--cell-pass);
+}
+
+.cell-bomb {
+    background-color: var(--cell-bomb);
 }
